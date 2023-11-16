@@ -1,23 +1,5 @@
 from random import uniform
 
-def generate_rand_segments(n):
-    
-    points = list()
-    
-    while n > 0:
-        
-        seg = [(round(uniform(100,900),6),round(uniform(300,900),6)),(round(uniform(100,900),6),round(uniform(300,900),6))]
-
-        # cannot have vertical segments
-        if seg[0][1] == seg[1][1]:
-            continue
-
-        points.append(seg)
-
-        n = n-1
-
-    return points
-
 def compute_intersection(seg1, seg2):
 
     A = seg1[0]
@@ -48,9 +30,26 @@ def compute_intersection(seg1, seg2):
     return intersect
 
 def cross_prod(a, b):
-
     # since the points are 2D, the cross product is trivial
     return a[0]*b[1] - b[0]*a[1]
 
 def compute_slope(a,b):
     return (a[1]-b[1])/(a[0]-b[0])
+
+def generate_rand_segments(n):
+    
+    points = list()
+    
+    while n > 0:
+        
+        seg = [(round(uniform(100,900),6),round(uniform(300,900),6)),(round(uniform(100,900),6),round(uniform(300,900),6))]
+
+        # cannot have vertical segments
+        if seg[0][1] == seg[1][1]:
+            continue
+
+        points.append(seg)
+
+        n = n-1
+
+    return points
