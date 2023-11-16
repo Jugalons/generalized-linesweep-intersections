@@ -22,6 +22,9 @@ def drawPoint(point):
     canvas.create_oval(p[0] - PSIZE, p[1] - PSIZE, p[0] + PSIZE, p[1] + PSIZE, fill='red', w=2)
 
 # =========================================
+
+usr_input = input("Enter the number of random segments you wish to generate (the UI starts to grind at an order of 10^4): ")
+
 root = Tk()
 root.title("Segments")
 root.geometry(str(YSIZE)+'x'+str(YSIZE)) #("800x800")
@@ -31,7 +34,7 @@ canvas.grid(row=0, column=0)
 
 while True:
 
-    S = generate_rand_segments(200)
+    S = generate_rand_segments(int(usr_input))
 
     BOTime = datetime.now()
     points = bentley_ottmann(S)
@@ -46,7 +49,7 @@ while True:
     drawSegments(S)
     for point in points:
         drawPoint(point)
-    print("number of intersections found:", len(points), "time taken:", BOTime)
+    print("\n\nNumber of intersections found:", len(points), "\nTime taken:", BOTime)
     break
 
 root.mainloop()
