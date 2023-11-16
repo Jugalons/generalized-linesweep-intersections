@@ -3,10 +3,8 @@ from functools import cmp_to_key
 from random import uniform
 from bentley_ottmann import bentley_ottmann
 from datetime import datetime
-import math 
-import random
 from tkinter import *
-import copy
+
 
 YSIZE = 1000
 PSIZE = 4
@@ -31,13 +29,6 @@ class Event:
 
     def __str__(self):
         return str(self.label) + ' ' + str(self.plabel) + ' ' + str(self.slabel)
-
-#-----------------------------------------------------------------
-# checks if line segment p1p2 and p3p4 intersect
-#-----------------------------------------------------------------
-def intersect(p1, p2, p3, p4):
-    pass
-    # *** need to implement ***                
 
 
 #-----------------------------------------------------------------
@@ -99,8 +90,6 @@ def generate_rand_segments(n):
         
         seg = [(round(uniform(100,900),6),round(uniform(300,900),6)),(round(uniform(100,900),6),round(uniform(300,900),6))]
 
-        #seg = [(round(uniform(0,5000),6),round(uniform(0,5000),6)),(round(uniform(0,5000),6),round(uniform(0,5000),6))]
-
         # cannot have vertical segments
         if seg[0][1] == seg[1][1]:
             continue
@@ -122,13 +111,13 @@ canvas.grid(row=0, column=0)
 
 while True:
 
-    #S = generate_rand_segments(10)
-    S = [[(361.895754, 536.959034), (695.428917, 812.163252)], [(815.966392, 706.421793), (528.59692, 894.884941)], [(462.006567, 840.630114), (797.402525, 463.721505)], [(876.025822, 573.681578), (570.219075, 339.888663)], [(812.78577, 432.428929), (161.390094, 866.221806)], [(363.743678, 856.212945), (803.621094, 485.225783)], [(738.854622, 845.149157), (717.289764, 552.461106)], [(526.499549, 700.087583), (200.53911, 688.52577)], [(429.988314, 851.913463), (139.920674, 768.060599)], [(397.114193, 353.072204), (434.094528, 792.268638)]]
+    S = generate_rand_segments(10)
 
 
-    #BOTime = datetime.now()
+    
+    BOTime = datetime.now()
     points = bentley_ottmann(S)
-    #BOTime = datetime.now() - BOTime
+    BOTime = datetime.now() - BOTime
 
     # not valid set of segments
     if points == -1:
@@ -139,7 +128,7 @@ while True:
     drawSegments(S)
     for point in points:
         drawPoint(point)
-    #print("number of intersections found:", len(points), "time taken:", BOTime)
+    print("number of intersections found:", len(points), "time taken:", BOTime)
     break
 
 root.mainloop()
