@@ -1,6 +1,5 @@
 from RedBlackTree import *
 from misc_tools import generate_rand_segments
-from random import uniform
 from bentley_ottmann import bentley_ottmann
 from datetime import datetime
 from tkinter import *

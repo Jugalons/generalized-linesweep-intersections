@@ -113,7 +113,6 @@ class RedBlackTree:
     return None
     
   def insert(self, key, data=None):
-    #print('insert key, data:', key, data.segment)
     x = Node(key, data)
 
     node = self.__insert_helper(x)
@@ -179,24 +178,6 @@ class RedBlackTree:
     self.size += 1
 
     return z
-    
-# *** extra functions for segments
-
-  def Above(self, s1, s2, x):
-    # *** need to implement ***
-    # fn used in searchx
-    return False
-
-  def searchx(self, key, data, xcoord):
-    x = self.root
-    # *** need to implement ***
-    # fn used to search for a segment (data)
-    return x
-
-  def swap(self, nn1, nn2, x):      
-    print('swap')
-    # *** need to implement ***
-    # fn used to swap two nodes in the tree
     
 # *** ---------------------------    
 
@@ -321,8 +302,4 @@ if __name__ == "__main__":
   tree.insert_segment(7, SweepData([(2,7),(3,5)]))
   for node in tree.inorder():
     print(node.key, node.data.label)
-
-  #print(tree.black_height())
-  #for node in tree.inorder():
-  #  print(node.key, node.data.label)
 
